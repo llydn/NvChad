@@ -5,6 +5,55 @@ require "nvchad.mappings"
 local map = vim.keymap.set
 
 map("n", ";", ":", { desc = "CMD enter command mode" })
-map("i", "jk", "<ESC>")
+map("i", "jj", "<ESC>")
 
 -- map({ "n", "i", "v" }, "<C-s>", "<cmd> w <cr>")
+
+
+map('n', '<leader>c', require('osc52').copy_operator, {expr = true})
+map('n', '<leader>cc', '<leader>c_', {remap = true})
+map('v', '<leader>c', require('osc52').copy_visual)
+
+
+map('i', '<C-E>', 'copilot#Accept("\\<CR>")', {
+  expr = true,
+  replace_keycodes = false,
+  silent = true
+})
+map("i", "<C-p>", "<Esc>:Copilot panel<CR>", { noremap = true, silent = true })
+
+map('i', '<CR>',  [[coc#pum#visible() ? coc#pum#confirm() : "\<CR>"]], {expr = true, silent = true})
+
+map("n", "K", ":call ShowDocumentation()<CR>", { noremap = true, silent = true })
+map(
+  "i",
+  "<Tab>",
+  [[coc#pum#visible() ? coc#pum#next(1) : exists('b:_copilot.suggestions') ? copilot#Accept("\<CR>") : CheckBackSpace() ? "\<Tab>" : coc#refresh()]],
+  { expr = true, silent = true , replace_keycodes = false}
+)
+map(
+  "i",
+  "<S-Tab>",
+  [[coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"]],
+  { expr = true, silent = true }
+)
+map("n", "<space>a", ":<C-u>CocList diagnostics<CR>", { noremap = true, silent = true, nowait = true })
+map("n", "<space>f", ":<C-u>call CocAction('format')<CR>", { noremap = true, silent = true, nowait = true })
+map("n", "gd", "<Plug>(coc-definition)", { silent = true })
+
+function CheckBackSpace()
+  local col = vim.fn.col(".") - 1
+  return col == 0 or vim.fn.getline("."):sub(col, col):match("%s")
+end
+
+-- mute highlight search shortcut
+map("n", "<C-l>", ":<C-u>nohlsearch<CR><C-l>", { noremap = true, silent = true })
+
+
+-- remap %% to complete curpath
+map(
+  "c",
+  "%%",
+ [[getcmdtype() == ':' ? expand('%:h') .. '/' : '%%']],
+  { expr = true, noremap = true }
+)

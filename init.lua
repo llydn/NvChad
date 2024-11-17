@@ -35,3 +35,12 @@ require "nvchad.autocmds"
 vim.schedule(function()
   require "mappings"
 end)
+
+-- disable mouse
+vim.opt.mouse = ''
+vim.g.copilot_no_tab_map = true
+
+-- set grepprg to use ripgrep
+vim.opt.grepprg = "ack --nogroup --column $*"
+vim.opt.grepformat = "%f:%l:%c:%m"
+
