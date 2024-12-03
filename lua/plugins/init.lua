@@ -31,7 +31,10 @@ return {
                 "pyright",
                 "mypy",
                 "ruff",
-                "luacheck"
+                "luacheck",
+                "lua-language-server",
+                "pylint",
+                "stylua",
             }
         }
     },
