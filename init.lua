@@ -42,3 +42,4 @@ vim.g.copilot_no_tab_map = true
 vim.opt.grepprg = "ack --nogroup --column $*"
 vim.opt.grepformat = "%f:%l:%c:%m"
 
+vim.opt.clipboard = ""  -- disables use of system clipboard
