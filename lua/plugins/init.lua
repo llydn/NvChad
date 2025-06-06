@@ -104,10 +104,19 @@ return {
     --         return require('configs.null-ls')
     --     end
     -- },
+
     {
         "nvimtools/none-ls.nvim",
         config = function()
             require('configs.none-ls')
         end,
+    },
+
+    {
+        "nvim-tree/nvim-tree.lua",
+        config = function()
+            require("configs.nvim-tree")  -- this will load your custom on_attach setup
+        end,
     }
+
 }
