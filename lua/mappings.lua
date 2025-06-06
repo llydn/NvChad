@@ -61,3 +61,6 @@ map("n", "<C-l>", ":<C-u>nohlsearch<CR><C-l>", { noremap = true, silent = true }
 
 -- remap %% to complete curpath
 map("c", "%%", [[getcmdtype() == ':' ? expand('%:h') .. '/' : '%%']], { expr = true, noremap = true })
+
+-- remap telescope git commit 
+map("n", "<leader>gc", "<leader>cm", { remap = true, desc = "Telescope git commit" })
