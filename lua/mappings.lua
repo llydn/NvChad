@@ -57,10 +57,22 @@ map("i", "<C-p>", "<Esc>:Copilot panel<CR>", { noremap = true, silent = true })
 -- map("n", "gd", "<Plug>(coc-definition)", { silent = true })
 
 -- mute highlight search shortcut
-map("n", "<C-l>", ":<C-u>nohlsearch<CR><C-l>", { noremap = true, silent = true })
+map("n", "<C-l>", ":<C-u>nohlsearch<CR><C-l>", { noremap = true, silent = true, desc = "No highlight search" })
 
 -- remap %% to complete curpath
 map("c", "%%", [[getcmdtype() == ':' ? expand('%:h') .. '/' : '%%']], { expr = true, noremap = true })
 
 -- remap telescope git commit 
-map("n", "<leader>gc", "<leader>cm", { remap = true, desc = "Telescope git commit" })
+map("n", "<leader>gc", "<leader>cm", { noremap = true, desc = "Telescope git commits" })
+vim.keymap.del("n", "<leader>cm")
+
+-- remap lsp hover from to '<leader>K'
+map("n", "<leader>k", vim.lsp.buf.hover, { desc = "LSP hover" })
+vim.keymap.set('n', 'K', '<Nop>', { noremap = true, silent = true })
+
+-- remap lsp go to type definition
+map("n", "gy", vim.lsp.buf.type_definition, { desc = "LSP go to type definition" })
+-- remap lsp go to implementation
+map("n", "gi", vim.lsp.buf.implementation, { desc = "LSP go to implementation" })
+-- remap lsp show documentation
+map("n", "gr", vim.lsp.buf.references, { desc = "LSP go to references" })
