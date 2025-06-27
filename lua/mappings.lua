@@ -67,8 +67,8 @@ map("n", "<leader>gc", "<leader>cm", { noremap = true, desc = "Telescope git com
 vim.keymap.del("n", "<leader>cm")
 
 -- remap lsp hover from to '<leader>K'
-map("n", "<leader>k", vim.lsp.buf.hover, { desc = "LSP hover" })
-vim.keymap.set('n', 'K', '<Nop>', { noremap = true, silent = true })
+map("n", "K", vim.lsp.buf.hover, { desc = "LSP hover" })
+vim.keymap.set('n', '<leader>k', '<Nop>', { noremap = true, silent = true })
 
 -- remap lsp go to type definition
 map("n", "gy", vim.lsp.buf.type_definition, { desc = "LSP go to type definition" })
