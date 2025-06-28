@@ -12,6 +12,9 @@ local function my_on_attach(bufnr)
     vim.keymap.set("n", "s", api.node.open.vertical, opts("Open: Vertical splib"))
     vim.keymap.set("n", "i", api.node.open.horizontal, opts("Open: Horizontal Split"))
 
+    vim.keymap.set("n", "n", api.fs.create, opts("Create File Or Directory"))
+    vim.keymap.del("n", "a", { buffer = bufnr })  -- remove default mapping for 'a'
+
     vim.keymap.set("n", "<C-x>", api.node.run.system, opts("Run System"))
     vim.keymap.del("n", "<C-v>", { buffer = bufnr })  -- remove default mapping for <C-v>
 

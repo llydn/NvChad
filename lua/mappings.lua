@@ -76,3 +76,5 @@ map("n", "gy", vim.lsp.buf.type_definition, { desc = "LSP go to type definition"
 map("n", "gi", vim.lsp.buf.implementation, { desc = "LSP go to implementation" })
 -- remap lsp show documentation
 map("n", "gr", vim.lsp.buf.references, { desc = "LSP go to references" })
+-- map open most recent closed buffer
+map("n", "<leader>u", "<cmd>UndotreeToggle<CR>", { desc = "Toggle Undotree" })
