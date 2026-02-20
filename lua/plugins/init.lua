@@ -27,16 +27,18 @@ return {
         "williamboman/mason.nvim",
         opts = {
             ensure_installed = {
-                "black",
+                -- Python tooling
                 "pyright",
+                "ruff-lsp",
+                "black",
                 "mypy",
-                "ruff",
-                "luacheck",
+                -- Lua
                 "lua-language-server",
-                "pylint",
                 "stylua",
-            }
-        }
+                -- optional
+                "pylint",
+            },
+        },
     },
 
     {
@@ -84,9 +86,9 @@ return {
         "ojroques/nvim-osc52",
         config = function()
             require("osc52").setup({
-                max_length = 0,           -- Maximum length of selection (0 for no limit)
-                silent = false,           -- Disable message on successful copy
-                trim = false,             -- Trim surrounding whitespaces before copy
+                max_length = 0, -- Maximum length of selection (0 for no limit)
+                silent = false, -- Disable message on successful copy
+                trim = false, -- Trim surrounding whitespaces before copy
                 tmux_passthrough = false, -- Use tmux passthrough (requires tmux: set -g allow-passthrough on)
             })
         end,
@@ -108,15 +110,14 @@ return {
     {
         "nvimtools/none-ls.nvim",
         config = function()
-            require('configs.none-ls')
+            require("configs.none-ls")
         end,
     },
 
     {
         "nvim-tree/nvim-tree.lua",
         config = function()
-            require("configs.nvim-tree")  -- this will load your custom on_attach setup
+            require("configs.nvim-tree") -- this will load your custom on_attach setup
         end,
-    }
-
+    },
 }
