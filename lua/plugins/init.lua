@@ -29,7 +29,7 @@ return {
             ensure_installed = {
                 -- Python tooling
                 "pyright",
-                "ruff-lsp",
+                "ruff",
                 "black",
                 "mypy",
                 -- Lua
