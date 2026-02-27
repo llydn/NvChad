@@ -9,9 +9,38 @@ map("i", "jj", "<ESC>")
 
 -- map({ "n", "i", "v" }, "<C-s>", "<cmd> w <cr>")
 
-map("n", "<leader>c", require("osc52").copy_operator, { expr = true })
-map("n", "<leader>cc", "<leader>c_", { remap = true })
-map("v", "<leader>c", require("osc52").copy_visual)
+local function osc52_copy(str)
+  -- base64 encode
+  local b64 = (vim.base64 and vim.base64.encode) and vim.base64.encode(str)
+    or vim.fn.system("base64", str):gsub("%s+", "")
+
+  local osc = "\x1b]52;c;" .. b64 .. "\x07"
+
+  -- tmux passthrough wrapper (KEY)
+  if vim.env.TMUX then
+    osc = "\x1bPtmux;\x1b" .. osc .. "\x1b\\"
+  end
+
+  -- send to terminal
+  vim.api.nvim_chan_send(vim.v.stderr, osc)
+end
+
+-- Visual-mode copy to system clipboard via OSC52
+vim.keymap.set("v", "<leader>c", function()
+  -- get visual selection as lines
+  local save_reg = vim.fn.getreg('"')
+  local save_type = vim.fn.getregtype('"')
+  vim.cmd('normal! ""y')
+  local text = vim.fn.getreg('"')
+  vim.fn.setreg('"', save_reg, save_type)
+
+  osc52_copy(text)
+  vim.notify(("OSC52 copied (%d chars)"):format(#text))
+end, { silent = true })
+
+-- map("n", "<leader>c", require("osc52").copy_operator, { expr = true })
+-- map("n", "<leader>cc", "<leader>c_", { remap = true })
+-- map("v", "<leader>c", require("osc52").copy_visual)
 
 map("i", "<C-E>", 'copilot#Accept("\\<CR>")', {
     expr = true,
