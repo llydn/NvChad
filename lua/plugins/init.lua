@@ -120,4 +120,11 @@ return {
             require("configs.nvim-tree") -- this will load your custom on_attach setup
         end,
     },
+
+    {
+        "lewis6991/gitsigns.nvim",
+        opts = function(...)
+        return require("configs.gitsigns").opts(...)
+        end,
+    },
 }
