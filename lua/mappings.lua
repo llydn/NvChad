@@ -42,12 +42,11 @@ end, { silent = true })
 -- map("n", "<leader>cc", "<leader>c_", { remap = true })
 -- map("v", "<leader>c", require("osc52").copy_visual)
 
-map("i", "<C-E>", 'copilot#Accept("\\<CR>")', {
-    expr = true,
-    replace_keycodes = false,
-    silent = true,
+map("i", "<C-y>", 'copilot#Accept("\\<CR>")', {
+  expr = true,
+  replace_keycodes = false,
+  silent = true,
 })
-map("i", "<C-p>", "<Esc>:Copilot panel<CR>", { noremap = true, silent = true })
 
 -- map("i", "<CR>", [[coc#pum#visible() ? coc#pum#confirm() : "\<CR>"]], { expr = true, silent = true })
 
