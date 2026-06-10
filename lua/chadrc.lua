@@ -18,4 +18,11 @@ M.cheatsheet = {
     excluded_groups = { "terminal (t)", "Autopairs", "Opens" }, -- can add group name or with mode
 }
 
+-- M.nvdash = { load_on_startup = true }
+-- M.ui = {
+--       tabufline = {
+--          lazyload = false
+--      }
+-- }
+
 return M
