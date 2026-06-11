@@ -91,7 +91,7 @@ map("n", "<C-l>", ":<C-u>nohlsearch<CR><C-l>", { noremap = true, silent = true, 
 map("c", "%%", [[getcmdtype() == ':' ? expand('%:h') .. '/' : '%%']], { expr = true, noremap = true })
 
 -- remap telescope git commit 
-map("n", "<leader>gc", "<leader>cm", { noremap = true, desc = "Telescope git commits" })
+map("n", "<leader>gc", "<cmd>Telescope git_commits<CR>", { desc = "Telescope git commits" })
 vim.keymap.del("n", "<leader>cm")
 
 -- remap lsp hover from to '<leader>K'
