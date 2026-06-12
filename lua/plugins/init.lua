@@ -27,6 +27,9 @@ return {
         "williamboman/mason.nvim",
         opts = {
             ensure_installed = {
+                -- LSP servers
+                "css-lsp",
+                "html-lsp",
                 -- Python tooling
                 "pyright",
                 "ruff",
