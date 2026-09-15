@@ -26,10 +26,17 @@ end
 
 require("nvim-tree").setup({
     on_attach = my_on_attach,
+    hijack_directories = {
+        enable = true,
+        auto_open = true,
+    },
+
+    disable_netrw = true,
+    hijack_netrw = true,
     update_focused_file = {
         enable = true,
         update_root = {
-            enable = false,
+            enable = true,
         },
     },
     renderer = {

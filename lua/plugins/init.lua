@@ -119,6 +119,7 @@ return {
 
     {
         "nvim-tree/nvim-tree.lua",
+        lazy = false,
         config = function()
             require("configs.nvim-tree") -- this will load your custom on_attach setup
         end,
